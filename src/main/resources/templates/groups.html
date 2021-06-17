@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Список выпускников</title>
+</head>
+<body>
+<div th:replace="fragments :: header" />
+<div class="container text-center">
+  <h1>Группы</h1>
+</div>
+
+<div class="container text-center">
+  <div sec:authorize="hasAuthority('ADMIN')">
+    <!--<a class="btn btn-warning my-2 mr-2 my-sm-0" th:href="@{/newgraduate}">Добавить выпускника</a>-->
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Группа</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${groups}">
+      <th scope="row" th:text="${group.getId()}"></th>
+      <td th:text="${group.getGroupName()}"></td>
+      <td>
+        <a class="btn btn-outline-warning " th:href="@{'/groups/graduates/'+${group.getId()}}">Выбрать</a>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

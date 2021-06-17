@@ -3,16 +3,16 @@ package ru.vlsu.graduate.persistence;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "group")
-public class Group {
+@Table(name = "acgroup")
+public class AcGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private String groupName;
 
-    public Group() {
+    public AcGroup() {
     }
 
     public Integer getId() {
@@ -23,11 +23,11 @@ public class Group {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }

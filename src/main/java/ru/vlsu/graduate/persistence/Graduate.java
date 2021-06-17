@@ -13,8 +13,8 @@ public class Graduate {
     private String fullName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group")
-    private Group group;
+    @JoinColumn(name = "group_id")
+    private AcGroup group;
 
     public Graduate() {
     }
@@ -35,11 +35,11 @@ public class Graduate {
         this.fullName = fullName;
     }
 
-    public Group getGroup() {
+    public AcGroup getGroup() {
         return group;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(AcGroup group) {
         this.group = group;
     }
 }

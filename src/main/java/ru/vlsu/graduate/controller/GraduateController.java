@@ -7,22 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.vlsu.graduate.persistence.Graduate;
 import ru.vlsu.graduate.persistence.GraduateRepository;
-import ru.vlsu.graduate.persistence.Group;
-import ru.vlsu.graduate.persistence.GroupRepository;
+import ru.vlsu.graduate.persistence.AcGroup;
+import ru.vlsu.graduate.persistence.AcGroupRepository;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
 public class GraduateController {
 
     private GraduateRepository graduateRepo;
-    private GroupRepository groupRepo;
+    private AcGroupRepository groupRepo;
 
     @Autowired
-    public GraduateController(GraduateRepository graduateRepository, GroupRepository groupRepository){
+    public GraduateController(GraduateRepository graduateRepository, AcGroupRepository acGroupRepository){
         this.graduateRepo = graduateRepository;
-        this.groupRepo = groupRepository;
+        this.groupRepo = acGroupRepository;
     }
 
     @GetMapping("/")
@@ -41,8 +40,8 @@ public class GraduateController {
     }
 
     @GetMapping("/newgraduate")
-    public String createPet(Model model){
-        List<Group> groups = groupRepo.findAll();
+    public String createGraduate(Model model){
+        List<AcGroup> groups = groupRepo.findAll();
         Graduate graduate = new Graduate();
         model.addAttribute("groups", groups);
         model.addAttribute("graduate", graduate);
